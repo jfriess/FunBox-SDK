@@ -1,0 +1,21 @@
+[submodule "libs/libDaisy"]
+	path = libs/libDaisy
+	url = https://github.com/electro-smith/libDaisy.git
+[submodule "libs/DaisySP"]
+	path = libs/DaisySP
+	url = https://github.com/electro-smith/DaisySP.git
+[submodule "libs/RTNeural"]
+	path = libs/RTNeural
+	url = https://github.com/jatinchowdhury18/RTNeural.git
+[submodule "libs/q"]
+	path = libs/q
+	url = https://github.com/cycfi/q.git
+[submodule "libs/eigen"]
+	path = libs/eigen
+	url = https://gitlab.com/libeigen/eigen
+[submodule "libs/gcem"]
+	path = libs/gcem
+	url = https://github.com/kthohr/gcem.git
+[submodule "libs/infra"]
+	path = libs/infra
+	url = https://github.com/cycfi/infra.git
