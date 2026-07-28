@@ -1,0 +1,56 @@
+{
+  "name": "FunBox SDK (Daisy Seed)",
+  "image": "mcr.microsoft.com/devcontainers/cpp:1-ubuntu-24.04",
+
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "gcc-arm-none-eabi,binutils-arm-none-eabi,libnewlib-arm-none-eabi,libstdc++-arm-none-eabi-newlib,dfu-util,openocd,ninja-build,usbutils"
+    }
+  },
+
+  // Forward USB for DFU flashing (dfu-util / Daisy bootloader)
+  "runArgs": [
+    "--privileged",
+    "--device=/dev/bus/usb"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.cmake-tools",
+        // "twxs.cmake"
+      ],
+      "settings": {
+        "C_Cpp.default.compilerPath": "/usr/bin/arm-none-eabi-gcc",
+        "C_Cpp.default.intelliSenseMode": "gcc-arm",
+        "C_Cpp.default.cppStandard": "c++14",
+        "C_Cpp.default.cStandard": "c11",
+        "C_Cpp.default.includePath": [
+          "${workspaceFolder}/include",
+          "${workspaceFolder}/libs/libDaisy/src",
+          "${workspaceFolder}/libs/libDaisy/Drivers/CMSIS/Include",
+          "${workspaceFolder}/libs/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+          "${workspaceFolder}/libs/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc",
+          "${workspaceFolder}/libs/DaisySP/Source",
+          "${workspaceFolder}/libs/eigen",
+          "${workspaceFolder}/libs/gcem/include",
+          "${workspaceFolder}/libs/RTNeural"
+        ],
+        "C_Cpp.default.defines": [
+          "STM32H750xx",
+          "USE_HAL_DRIVER",
+          "ARM_MATH_CM7",
+          "__FPU_PRESENT=1"
+        ],
+        "makefile.makePath": "make"
+      }
+    }
+  },
+
+  "postCreateCommand": "git submodule update --init --recursive",
+
+  "remoteUser": "vscode"
+}
